@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trading Journal - Notion Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 h-screen flex overflow-hidden">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="p-6 text-2xl font-semibold text-gray-900 border-b border-gray-200">
+      Trading Journal
+    </div>
+    <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+      <button id="allEntriesBtn" class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition">All Entries</button>
+      <button id="investingBtn" class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition">Investing</button>
+      <button id="forexBtn" class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 transition">Forex</button>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 flex flex-col p-6 overflow-y-auto">
+    <header class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold text-gray-900">Journal Entries</h1>
+      <button id="addEntryBtn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+        <i class="fas fa-plus mr-2"></i> Add Entry
+      </button>
+    </header>
+
+    <section id="entriesList" class="space-y-4 overflow-auto flex-1">
+      <!-- Journal entries will be rendered here -->
+    </section>
+
+    <!-- Entry form modal -->
+    <div id="entryModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6 relative">
+        <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times fa-lg"></i>
+        </button>
+        <h2 class="text-xl font-semibold mb-4">Add/Edit Entry</h2>
+        <form id="entryForm" class="space-y-4">
+          <div>
+            <label for="entryDate" class="block text-sm font-medium text-gray-700">Date</label>
+            <input type="date" id="entryDate" name="entryDate" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+          </div>
+          <div>
+            <label for="entryType" class="block text-sm font-medium text-gray-700">Type</label>
+            <select id="entryType" name="entryType" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+              <option value="">Select type</option>
+              <option value="Investing">Investing</option>
+              <option value="Forex">Forex</option>
+            </select>
+          </div>
+          <div>
+            <label for="entryNotes" class="block text-sm font-medium text-gray-700">Notes</label>
+            <textarea id="entryNotes" name="entryNotes" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-md p-2"></textarea>
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button type="button" id="cancelBtn" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100">Cancel</button>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
